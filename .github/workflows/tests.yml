@@ -36,11 +36,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pytest
-        # sending files in form data throwing error in flask 3 while running tests
-        pip install Werkzeug==2.0.2 flask==2.0.2
-        pip install .
-        
+        pip install -r requirements.txt -r requirements-dev.txt .
     - name: Test with pytest
       run: |
         cd tests
