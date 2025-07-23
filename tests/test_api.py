@@ -291,9 +291,6 @@ class TestVerifyEndpoint(unittest.TestCase):
         assert response.status_code == 400
 
     def test_analyze_for_multipart_form_data(self):
-        if is_form_data_file_testable() is False:
-            return
-
         with open("/tmp/img1.jpg", "rb") as img_file:
             response = self.app.post(
                 "/analyze",
@@ -312,9 +309,6 @@ class TestVerifyEndpoint(unittest.TestCase):
             logger.info("✅ analyze api for multipart form data test is done")
 
     def test_verify_for_multipart_form_data(self):
-        if is_form_data_file_testable() is False:
-            return
-
         with open("/tmp/img1.jpg", "rb") as img1_file:
             with open("/tmp/img2.jpg", "rb") as img2_file:
                 response = self.app.post(
@@ -341,9 +335,6 @@ class TestVerifyEndpoint(unittest.TestCase):
                 logger.info("✅ verify api for multipart form data test is done")
 
     def test_represent_for_multipart_form_data(self):
-        if is_form_data_file_testable() is False:
-            return
-
         with open("/tmp/img1.jpg", "rb") as img_file:
             response = self.app.post(
                 "/represent",
@@ -360,9 +351,6 @@ class TestVerifyEndpoint(unittest.TestCase):
             logger.info("✅ represent api for multipart form data test is done")
 
     def test_represent_for_multipart_form_data_and_filepath(self):
-        if is_form_data_file_testable() is False:
-            return
-
         response = self.app.post(
             "/represent",
             content_type="multipart/form-data",
@@ -378,9 +366,6 @@ class TestVerifyEndpoint(unittest.TestCase):
         logger.info("✅ represent api for multipart form data and file path test is done")
 
     def test_extract_image_from_form_data(self):
-        if is_form_data_file_testable() is False:
-            return
-
         img_key = "img1"
         img_itself = np.zeros((100, 100, 3), dtype=np.uint8)
         # Establish a temporary request context using the Flask app
@@ -404,9 +389,6 @@ class TestVerifyEndpoint(unittest.TestCase):
         logger.info("✅ test extract_image_from_request for real image from form data done")
 
     def test_extract_image_string_from_json_data(self):
-        if is_form_data_file_testable() is False:
-            return
-
         img_key = "img1"
         img_data = "image_url_or_path_or_base64"
 
@@ -425,9 +407,6 @@ class TestVerifyEndpoint(unittest.TestCase):
         logger.info("✅ test extract_image_from_request for image string from json done")
 
     def test_extract_image_string_from_form_data(self):
-        if is_form_data_file_testable() is False:
-            return
-
         img_key = "img1"
         img_data = "image_url_or_path_or_base64"
 
